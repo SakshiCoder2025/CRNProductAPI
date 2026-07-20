@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Include="obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
+	  <Compile Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfo.cs" />
+	  <Compile Include="obj\Debug\net8.0\CRNProductAPI.GlobalUsings.g.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="obj\CRNProductAPI.csproj.nuget.dgspec.json" />
+	  <Content Include="obj\Debug\net8.0\rpswa.dswa.cache.json" />
+	  <Content Include="obj\Debug\net8.0\staticwebassets.removed.txt" />
+	  <Content Include="obj\project.assets.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Asp.Versioning.Mvc" Version="8.0.0" />
+		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.29" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.29" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.29">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Authentication\" />
+	  <Folder Include="obj\Debug\net8.0\refint\" />
+	  <Folder Include="obj\Debug\net8.0\ref\" />
+	  <Folder Include="obj\Debug\net8.0\staticwebassets\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="CRNProductAPI.sln" />
+	  <None Include="obj\CRNProductAPI.csproj.nuget.g.props" />
+	  <None Include="obj\CRNProductAPI.csproj.nuget.g.targets" />
+	  <None Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfoInputs.cache" />
+	  <None Include="obj\Debug\net8.0\CRNProductAPI.assets.cache" />
+	  <None Include="obj\Debug\net8.0\CRNProductAPI.csproj.AssemblyReference.cache" />
+	  <None Include="obj\Debug\net8.0\CRNProductAPI.GeneratedMSBuildEditorConfig.editorconfig" />
+	  <None Include="obj\project.nuget.cache" />
+	</ItemGroup>
+
+</Project>
