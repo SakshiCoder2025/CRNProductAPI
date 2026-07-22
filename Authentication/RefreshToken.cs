@@ -1,4 +1,4 @@
-﻿namespace CRNProductAPI.Models
+﻿namespace CRNProductAPI.Authentication
 {
     public class RefreshToken
     {

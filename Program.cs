@@ -12,8 +12,8 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using CRNProductAPI.Models;
 using Microsoft.AspNetCore.ResponseCompression;
+using CRNProductAPI.Authentication;
 
 
 Log.Logger = new LoggerConfiguration()
@@ -24,17 +24,15 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog();
 
-// Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 
-// JWT Settings bind karo appsettings.json se
+
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>()!;
 
-// JWT Authentication setup
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -74,16 +72,18 @@ builder.Services.AddApiVersioning(options =>
     options.GroupNameFormat = "'v'VVV";
     options.SubstituteApiVersionInUrl = true;
 });
-// Repository & Service DI
+
+// Repository  Service DI Inject
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
-// FluentValidation
+
+
 builder.Services.AddValidatorsFromAssemblyContaining<ProductCreateValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -112,7 +112,7 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
-// CORS
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
@@ -125,10 +125,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 app.UseResponseCompression();
-// Global exception handling middleware — sabse pehle add karo pipeline me
+
+
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

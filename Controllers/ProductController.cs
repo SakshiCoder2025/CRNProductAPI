@@ -13,24 +13,23 @@ namespace CRNProductAPI.Controllers
     [Authorize]
     public class ProductsController : ControllerBase
     {
+        #region Constructor
         private readonly IProductService _productService;
         private readonly IValidator<ProductCreateDto> _createValidator;
         private readonly IValidator<ProductUpdateDto> _updateValidator;
         private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(
-            IProductService productService,
-            IValidator<ProductCreateDto> createValidator,
-            IValidator<ProductUpdateDto> updateValidator,
-            ILogger<ProductsController> logger)
+        public ProductsController(IProductService productService, IValidator<ProductCreateDto> createValidator, IValidator<ProductUpdateDto> updateValidator,
+             ILogger<ProductsController> logger)
         {
             _productService = productService;
             _createValidator = createValidator;
             _updateValidator = updateValidator;
             _logger = logger;
         }
+        #endregion
 
-        // GET: api/v1/products?pageNumber=1&pageSize=10
+        #region Get All Products with Pagination
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
@@ -49,8 +48,9 @@ namespace CRNProductAPI.Controllers
 
             return Ok(result);
         }
+        #endregion
 
-        // GET: api/v1/products/5
+        #region Get Product by Id
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -60,8 +60,9 @@ namespace CRNProductAPI.Controllers
 
             return Ok(product);
         }
+        #endregion
 
-        // POST: api/v1/products
+        #region Create Product
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ProductCreateDto dto)
         {
@@ -72,8 +73,9 @@ namespace CRNProductAPI.Controllers
             var created = await _productService.CreateProductAsync(dto);
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
+        #endregion
 
-        // PUT: api/v1/products/5
+        #region Update Product
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductUpdateDto dto)
         {
@@ -87,8 +89,9 @@ namespace CRNProductAPI.Controllers
 
             return NoContent();
         }
+        #endregion
 
-        // DELETE: api/v1/products/5
+        #region Delete Product
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -98,5 +101,6 @@ namespace CRNProductAPI.Controllers
 
             return NoContent();
         }
+        #endregion
     }
 }

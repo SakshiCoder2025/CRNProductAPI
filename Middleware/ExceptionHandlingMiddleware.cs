@@ -5,6 +5,7 @@ namespace CRNProductAPI.Middleware
 {
     public class ExceptionHandlingMiddleware
     {
+        #region Constructor
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionHandlingMiddleware> _logger;
 
@@ -13,7 +14,9 @@ namespace CRNProductAPI.Middleware
             _next = next;
             _logger = logger;
         }
+        #endregion
 
+        #region InvokeAsync
         public async Task InvokeAsync(HttpContext context)
         {
             try
@@ -26,7 +29,9 @@ namespace CRNProductAPI.Middleware
                 await HandleExceptionAsync(context, ex);
             }
         }
+        #endregion
 
+        #region Handle Exception 
         private static Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             context.Response.ContentType = "application/json";
@@ -36,11 +41,12 @@ namespace CRNProductAPI.Middleware
             {
                 StatusCode = context.Response.StatusCode,
                 Message = "An unexpected error occurred. Please try again later.",
-                Detail = ex.Message // Dev ke liye; production me isse hata dena
+                Detail = ex.Message
             };
 
             var json = JsonSerializer.Serialize(response);
             return context.Response.WriteAsync(json);
         }
+        #endregion
     }
 }

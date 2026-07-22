@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning;
-using CRNProductAPI.Interfaces;
+using CRNProductAPI.Authentication;
 using CRNProductAPI.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,21 +10,20 @@ namespace CRNProductAPI.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class AuthController : ControllerBase
     {
+        #region Constructor
         private readonly ITokenService _tokenService;
         private readonly ILogger<AuthController> _logger;
-
         public AuthController(ITokenService tokenService, ILogger<AuthController> logger)
         {
             _tokenService = tokenService;
             _logger = logger;
         }
+        #endregion
 
-        // POST: api/v1/Auth/login
+        #region Login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto dto)
-        {
-            // NOTE: Assignment scope ke liye simple hardcoded check.
-            // Production me: Users table + BCrypt/Argon2 se hashed password verify karna chahiye.
+        {  
             if (dto.Username != "admin" || dto.Password != "Admin@123")
             {
                 _logger.LogWarning("Failed login attempt for username {Username}", dto.Username);
@@ -36,8 +35,9 @@ namespace CRNProductAPI.Controllers
 
             return Ok(tokens);
         }
+        #endregion
 
-        // POST: api/v1/Auth/refresh
+        #region Refresh Token
         [HttpPost("refresh")]
         public async Task<IActionResult> Refresh([FromBody] RefreshRequestDto dto)
         {
@@ -48,13 +48,15 @@ namespace CRNProductAPI.Controllers
 
             return Ok(tokens);
         }
+        #endregion
 
-        // POST: api/v1/Auth/revoke
+        #region Revoke Token
         [HttpPost("revoke")]
         public async Task<IActionResult> Revoke([FromBody] RefreshRequestDto dto)
         {
             await _tokenService.RevokeRefreshTokenAsync(dto.RefreshToken);
             return Ok(new { Message = "Token revoked successfully" });
         }
+        #endregion
     }
 }

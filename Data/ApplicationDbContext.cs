@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CRNProductAPI.Models;
+using CRNProductAPI.Authentication;
 
 namespace CRNProductAPI.Data
 {
@@ -17,7 +18,6 @@ namespace CRNProductAPI.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Product configuration
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
@@ -26,8 +26,6 @@ namespace CRNProductAPI.Data
                 entity.Property(p => p.CreatedBy).IsRequired().HasMaxLength(100);
                 entity.Property(p => p.ModifiedBy).HasMaxLength(100);
             });
-
-            // Item configuration
             modelBuilder.Entity<Item>(entity =>
             {
                 entity.ToTable("Item");

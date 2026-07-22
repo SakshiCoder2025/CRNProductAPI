@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using CRNProductAPI.Data;
-using CRNProductAPI.Interfaces;
 using CRNProductAPI.Models;
 using CRNProductAPI.Models.DTOs;
 
-namespace CRNProductAPI.Services
+namespace CRNProductAPI.Authentication
 {
     public class TokenService : ITokenService
     {
+        #region Constructor and Dependencies
         private readonly JwtSettings _jwtSettings;
         private readonly ApplicationDbContext _context;
         private readonly ILogger<TokenService> _logger;
@@ -24,7 +24,9 @@ namespace CRNProductAPI.Services
             _context = context;
             _logger = logger;
         }
+        #endregion
 
+        #region  Generate Tokens
         public async Task<AuthResponseDto> GenerateTokensAsync(string username)
         {
             try
@@ -57,7 +59,9 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
+        #endregion
 
+        #region Refresh Token
         public async Task<AuthResponseDto?> RefreshTokenAsync(string refreshToken)
         {
             try
@@ -70,12 +74,8 @@ namespace CRNProductAPI.Services
                     _logger.LogWarning("Invalid or expired refresh token used");
                     return null;
                 }
-
-                // Purana token revoke karo (rotation)
                 storedToken.IsRevoked = true;
                 await _context.SaveChangesAsync();
-
-                // Naya token pair generate karo
                 return await GenerateTokensAsync(storedToken.Username);
             }
             catch (Exception ex)
@@ -84,7 +84,9 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
+        #endregion
 
+        #region Revoke Token
         public async Task RevokeRefreshTokenAsync(string refreshToken)
         {
             try
@@ -104,7 +106,9 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
+        #endregion
 
+        #region Generate Access Token 
         private string GenerateAccessToken(string username)
         {
             var claims = new List<Claim>
@@ -126,7 +130,9 @@ namespace CRNProductAPI.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        #endregion
 
+        #region  Refresh Token
         private static string GenerateRefreshTokenString()
         {
             var randomBytes = new byte[64];
@@ -134,5 +140,6 @@ namespace CRNProductAPI.Services
             rng.GetBytes(randomBytes);
             return Convert.ToBase64String(randomBytes);
         }
+        #endregion
     }
 }

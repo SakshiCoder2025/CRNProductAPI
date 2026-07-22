@@ -1,6 +1,6 @@
 ﻿using CRNProductAPI.Models.DTOs;
 
-namespace CRNProductAPI.Interfaces
+namespace CRNProductAPI.Authentication
 {
     public interface ITokenService
     {
