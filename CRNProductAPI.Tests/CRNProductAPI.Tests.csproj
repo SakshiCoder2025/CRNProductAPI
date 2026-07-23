@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CRNProductAPI\CRNProductAPI.csproj" />
+    <ProjectReference Include="..\CRNProductAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

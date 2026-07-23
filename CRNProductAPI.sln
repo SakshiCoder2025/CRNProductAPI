@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.37216.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRNProductAPI", "CRNProductAPI.csproj", "{6B2AC869-709A-454B-B364-E879F177B25B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRNProductAPI.Tests", "..\CRNProductAPI.Tests\CRNProductAPI.Tests.csproj", "{4CBDEA3B-D6D2-4A1F-AE15-4036C4F95BAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRNProductAPI.Tests", "CRNProductAPI.Tests\CRNProductAPI.Tests.csproj", "{770D5D8C-7A8D-8979-873F-EF990D876B18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{6B2AC869-709A-454B-B364-E879F177B25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B2AC869-709A-454B-B364-E879F177B25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B2AC869-709A-454B-B364-E879F177B25B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4CBDEA3B-D6D2-4A1F-AE15-4036C4F95BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CBDEA3B-D6D2-4A1F-AE15-4036C4F95BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CBDEA3B-D6D2-4A1F-AE15-4036C4F95BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CBDEA3B-D6D2-4A1F-AE15-4036C4F95BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770D5D8C-7A8D-8979-873F-EF990D876B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770D5D8C-7A8D-8979-873F-EF990D876B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770D5D8C-7A8D-8979-873F-EF990D876B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770D5D8C-7A8D-8979-873F-EF990D876B18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
