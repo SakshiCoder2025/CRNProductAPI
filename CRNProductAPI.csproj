@@ -38,7 +38,9 @@
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 	</ItemGroup>
+	
 
+	
 	<ItemGroup>
 	  <None Include="CRNProductAPI.sln" />
 	  <None Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfoInputs.cache" />
