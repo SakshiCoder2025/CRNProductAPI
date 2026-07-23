@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -10,15 +9,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Include="obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
-	  <Compile Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfo.cs" />
-	  <Compile Include="obj\Debug\net8.0\CRNProductAPI.GlobalUsings.g.cs" />
+		<Compile Remove="CRNProductAPI.Tests\**" />
+		<Content Remove="CRNProductAPI.Tests\**" />
+		<None Remove="CRNProductAPI.Tests\**" />
+		<EmbeddedResource Remove="CRNProductAPI.Tests\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="obj\Debug\net8.0\CRNProductAPI.csproj.FileListAbsolute.txt" />
-	  <Content Include="obj\Debug\net8.0\rpswa.dswa.cache.json" />
-	  <Content Include="obj\Debug\net8.0\staticwebassets.removed.txt" />
+		<Content Include="obj\Debug\net8.0\CRNProductAPI.csproj.FileListAbsolute.txt" />
+		<Content Include="obj\Debug\net8.0\rpswa.dswa.cache.json" />
+		<Content Include="obj\Debug\net8.0\staticwebassets.removed.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -38,19 +38,16 @@
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 	</ItemGroup>
-	
 
-	
 	<ItemGroup>
-	  <None Include="CRNProductAPI.sln" />
-	  <None Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfoInputs.cache" />
-	  <None Include="obj\Debug\net8.0\CRNProductAPI.GeneratedMSBuildEditorConfig.editorconfig" />
+		<None Include="CRNProductAPI.sln" />
+		<None Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfoInputs.cache" />
+		<None Include="obj\Debug\net8.0\CRNProductAPI.GeneratedMSBuildEditorConfig.editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="obj\Debug\net8.0\refint\" />
-	  <Folder Include="obj\Debug\net8.0\ref\" />
-	  <Folder Include="obj\Debug\net8.0\staticwebassets\" />
+		<Folder Include="obj\Debug\net8.0\refint\" />
+		<Folder Include="obj\Debug\net8.0\ref\" />
+		<Folder Include="obj\Debug\net8.0\staticwebassets\" />
 	</ItemGroup>
-
 </Project>
