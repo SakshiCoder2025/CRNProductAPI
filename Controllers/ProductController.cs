@@ -40,6 +40,7 @@ namespace CRNProductAPI.Controllers
 
             var result = new
             {
+
                 TotalCount = totalCount,
                 PageNumber = pageNumber,
                 PageSize = pageSize,
