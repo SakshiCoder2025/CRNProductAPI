@@ -16,10 +16,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="obj\CRNProductAPI.csproj.nuget.dgspec.json" />
+	  <Content Include="obj\Debug\net8.0\CRNProductAPI.csproj.FileListAbsolute.txt" />
 	  <Content Include="obj\Debug\net8.0\rpswa.dswa.cache.json" />
 	  <Content Include="obj\Debug\net8.0\staticwebassets.removed.txt" />
-	  <Content Include="obj\project.assets.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -27,6 +26,7 @@
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.29" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.29" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.29" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.29">
 			<PrivateAssets>all</PrivateAssets>
@@ -40,20 +40,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="obj\Debug\net8.0\refint\" />
-	  <Folder Include="obj\Debug\net8.0\ref\" />
-	  <Folder Include="obj\Debug\net8.0\staticwebassets\" />
+	  <None Include="CRNProductAPI.sln" />
+	  <None Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfoInputs.cache" />
+	  <None Include="obj\Debug\net8.0\CRNProductAPI.GeneratedMSBuildEditorConfig.editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="CRNProductAPI.sln" />
-	  <None Include="obj\CRNProductAPI.csproj.nuget.g.props" />
-	  <None Include="obj\CRNProductAPI.csproj.nuget.g.targets" />
-	  <None Include="obj\Debug\net8.0\CRNProductAPI.AssemblyInfoInputs.cache" />
-	  <None Include="obj\Debug\net8.0\CRNProductAPI.assets.cache" />
-	  <None Include="obj\Debug\net8.0\CRNProductAPI.csproj.AssemblyReference.cache" />
-	  <None Include="obj\Debug\net8.0\CRNProductAPI.GeneratedMSBuildEditorConfig.editorconfig" />
-	  <None Include="obj\project.nuget.cache" />
+	  <Folder Include="obj\Debug\net8.0\refint\" />
+	  <Folder Include="obj\Debug\net8.0\ref\" />
+	  <Folder Include="obj\Debug\net8.0\staticwebassets\" />
 	</ItemGroup>
 
 </Project>

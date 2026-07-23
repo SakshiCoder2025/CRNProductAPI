@@ -6,6 +6,7 @@ namespace CRNProductAPI.Services
 {
     public class ProductService : IProductService
     {
+        #region Constructor
         private readonly IProductRepository _repository;
         private readonly ILogger<ProductService> _logger;
 
@@ -14,7 +15,7 @@ namespace CRNProductAPI.Services
             _repository = repository;
             _logger = logger;
         }
-
+        #endregion
         public async Task<(IEnumerable<ProductResponseDto> Items, int TotalCount)> GetAllProductsAsync(int pageNumber, int pageSize)
         {
             try
@@ -31,7 +32,6 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
-
         public async Task<ProductResponseDto?> GetProductByIdAsync(int id)
         {
             try
@@ -45,7 +45,6 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
-
         public async Task<ProductResponseDto> CreateProductAsync(ProductCreateDto dto)
         {
             try
@@ -67,7 +66,6 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
-
         public async Task<bool> UpdateProductAsync(int id, ProductUpdateDto dto)
         {
             try
@@ -90,7 +88,6 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
-
         public async Task<bool> DeleteProductAsync(int id)
         {
             try
@@ -109,7 +106,6 @@ namespace CRNProductAPI.Services
                 throw;
             }
         }
-
         private static ProductResponseDto MapToDto(Product product)
         {
             return new ProductResponseDto
